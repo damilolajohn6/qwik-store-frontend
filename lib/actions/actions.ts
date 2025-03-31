@@ -1,42 +1,34 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
+export const getCollections = async () => {
+  const collections = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/collections`)
+  return await collections.json()
+}
 
-const fetchAPI = async (endpoint: string, options: RequestInit = {}) => {
-  try {
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 10000); // Timeout after 10s
+export const getCollectionDetails = async (collectionId: string) => {
+  const collection = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/collections/${collectionId}`)
+  return await collection.json()
+}
 
-    const response = await fetch(`${API_URL}${endpoint}`, {
-      ...options,
-      headers: {
-        "Content-Type": "application/json",
-        ...options.headers,
-      },
-      signal: controller.signal, // Attach timeout signal
-    });
+export const getProducts = async () => {
+  const products = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products`)
+  return await products.json()
+}
 
-    clearTimeout(timeout);
+export const getProductDetails = async (productId: string) => {
+  const product = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products/${productId}`)
+  return await product.json()
+}
 
-    if (!response.ok) {
-      console.error(`API Error: ${response.status} ${response.statusText}`);
-      return null;
-    }
+export const getSearchedProducts = async (query: string) => {
+  const searchedProducts = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/search/${query}`)
+  return await searchedProducts.json()
+}
 
-    return await response.json();
-  } catch (error) {
-    console.error("Network error:", error);
-    return null;
-  }
-};
+export const getOrders = async (customerId: string) => {
+  const orders = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/orders/customers/${customerId}`)
+  return await orders.json()
+}
 
-// Collection APIs
-export const getCollections = async () => fetchAPI("/collections");
-export const getCollectionDetails = async (collectionId: string) => fetchAPI(`/collections/${collectionId}`);
-
-// Product APIs
-export const getProducts = async () => fetchAPI("/products");
-export const getProductDetails = async (productId: string) => fetchAPI(`/products/${productId}`);
-export const getSearchedProducts = async (query: string) => fetchAPI(`/search/${query}`);
-export const getRelatedProducts = async (productId: string) => fetchAPI(`/products/${productId}/related`);
-
-// Order APIs
-export const getOrders = async (customerId: string) => fetchAPI(`/orders/customers/${customerId}`);
+export const getRelatedProducts = async (productId: string) => {
+  const relatedProducts = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products/${productId}/related`)
+  return await relatedProducts.json()
+}

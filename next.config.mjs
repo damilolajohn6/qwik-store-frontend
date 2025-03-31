@@ -7,10 +7,6 @@ const nextConfig = {
       },
     ],
   },
-  env: {
-    NEXT_PUBLIC_API_URL: "https://qwik-fashion-admin.netlify.app",
-    //NEXT_PUBLIC_API_URL: "http://localhost:3001",
-  },
 };
 
 export default nextConfig;
