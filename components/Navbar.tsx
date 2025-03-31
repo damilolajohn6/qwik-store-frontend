@@ -30,7 +30,9 @@ const Navbar = () => {
     return (
       <div className="sticky top-0 z-10 py-2 px-10 flex justify-between items-center bg-white max-sm:px-2">
         <Link href="/">
-          <Image src="/logo.png" alt="logo" width={130} height={100} />
+          <h1 className="text-heading2-bold">
+            Just <span className="text-red-500">Clothing</span>
+          </h1>
         </Link>
         <div>Loading...</div>
       </div>
@@ -38,7 +40,7 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="sticky top-0 z-10 py-2 px-10 flex gap-2 justify-between items-center bg-white max-sm:px-2">
+    <nav className="sticky top-0 z-10 py-2 px-10 flex gap-2 justify-between  items-center bg-gray-800 max-sm:px-2">
       <Link href="/">
         {/* <Image src="/logo.png" alt="logo" width={130} height={100} priority />{" "} */}
         <h1 className="text-heading2-bold">
@@ -52,7 +54,7 @@ const Navbar = () => {
         <Link
           href="/"
           className={`hover:text-red-500 ${
-            pathname === "/" ? "text-red-500" : "text-gray-800"
+            pathname === "/" ? "text-red-500" : "text-white"
           }`}
         >
           Home
@@ -60,7 +62,7 @@ const Navbar = () => {
         <Link
           href={user ? "/wishlist" : "/sign-in"}
           className={`hover:text-red-500 ${
-            pathname === "/wishlist" ? "text-red-500" : "text-gray-800"
+            pathname === "/wishlist" ? "text-red-500" : "text-white"
           }`}
         >
           Wishlist
@@ -68,7 +70,7 @@ const Navbar = () => {
         <Link
           href={user ? "/orders" : "/sign-in"}
           className={`hover:text-red-500 ${
-            pathname === "/orders" ? "text-red-500" : "text-gray-800"
+            pathname === "/orders" ? "text-red-500" : "text-white"
           }`}
         >
           Orders
@@ -78,7 +80,7 @@ const Navbar = () => {
       {/* Search Bar */}
       <div className="flex gap-3 border border-gray-300 px-3 py-1 items-center rounded-lg">
         <input
-          className="outline-none max-sm:max-w-[120px] text-gray-700 placeholder-gray-400"
+          className="outline-none max-sm:max-w-[120px] text-white placeholder-gray-400"
           placeholder="Search..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
@@ -105,8 +107,8 @@ const Navbar = () => {
           href="/cart"
           className="flex items-center gap-2 border border-gray-300 rounded-lg px-2 py-1 hover:bg-gray-900 hover:text-white transition-colors max-md:hidden"
         >
-          <ShoppingCart className="h-5 w-5" />
-          <p className="text-base font-bold">
+          <ShoppingCart className="h-5 w-5 text-white" />
+          <p className="text-base font-bold text-white">
             Cart ({cart.cartItems.length || 0})
           </p>
         </Link>
@@ -117,7 +119,7 @@ const Navbar = () => {
           onClick={() => setDropdownMenu(!dropdownMenu)}
           aria-label="Toggle menu"
         >
-          <Menu className="h-6 w-6 cursor-pointer hover:text-red-500" />
+          <Menu className="h-6 w-6 cursor-pointer text-white hover:text-red-500" />
         </button>
 
         {/* Mobile Dropdown */}

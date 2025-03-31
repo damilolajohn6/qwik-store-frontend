@@ -9,28 +9,26 @@ interface ProductCardProps {
   updateSignedInUser?: (updatedUser: UserType) => void;
 }
 
-const ProductCard = ({ product, updateSignedInUser }: ProductCardProps) => {
+const ProductCard = ({ product, updateSignedInUser }: ProductCardProps ) => {
   return (
     <Link
       href={`/products/${product._id}`}
-      className="flex flex-col gap-2 w-full sm:w-[220px] md:w-[250px]"
+      className="w-[220px] flex flex-col gap-2"
     >
-      <div className="w-full h-[200px] sm:h-[250px] rounded-lg overflow-hidden">
-        <Image
-          src={product.media[0]}
-          alt="product"
-          layout="responsive"
-          width={450}
-          height={500}
-          className="object-cover w-full h-full"
-        />
+      <Image
+        src={product.media[0]}
+        alt="product"
+        width={250}
+        height={300}
+        className="h-[250px] rounded-lg object-cover"
+      />
+      <div>
+        {/* <p className="text-small-medium text-grey-2">{product.category}</p> */}
+        <p className="text-base-bold">{product.title}</p>
       </div>
-      <div className="flex justify-between items-center px-2">
-        <p className="text-sm md:text-base font-bold">{product.title}</p>
-        <HeartFavorite
-          product={product}
-          updateSignedInUser={updateSignedInUser}
-        />
+      <div className="flex justify-between items-center">
+        <p className="text-body-bold">#{product.price}</p>
+        <HeartFavorite product={product} updateSignedInUser={updateSignedInUser} />
       </div>
     </Link>
   );
