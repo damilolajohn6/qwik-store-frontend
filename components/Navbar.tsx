@@ -40,7 +40,10 @@ const Navbar = () => {
   return (
     <nav className="sticky top-0 z-10 py-2 px-10 flex gap-2 justify-between items-center bg-white max-sm:px-2">
       <Link href="/">
-        <Image src="/logo.png" alt="logo" width={130} height={100} priority />{" "}
+        {/* <Image src="/logo.png" alt="logo" width={130} height={100} priority />{" "} */}
+        <h1 className="text-heading2-bold">
+          Just <span className="text-red-500">Clothing</span>
+        </h1>
         {/* Add priority for LCP */}
       </Link>
 
