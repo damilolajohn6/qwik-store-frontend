@@ -28,7 +28,7 @@ const Navbar = () => {
   // If Clerk auth state is still loading, show a placeholder
   if (!isLoaded) {
     return (
-      <div className="sticky top-0 z-10 py-2 px-10 flex justify-between items-center bg-white max-sm:px-2">
+      <div className="sticky top-0 z-10 py-7 h-14 px-10 flex justify-between items-center bg-white max-sm:px-2">
         <Link href="/">
           <h1 className="text-heading2-bold">
             Just <span className="text-red-500">Clothing</span>
@@ -43,7 +43,7 @@ const Navbar = () => {
     <nav className="sticky top-0 z-10 py-2 px-10 flex gap-2 justify-between  items-center bg-gray-800 max-sm:px-2">
       <Link href="/">
         {/* <Image src="/logo.png" alt="logo" width={130} height={100} priority />{" "} */}
-        <h1 className="text-heading2-bold">
+        <h1 className="text-heading2-bold text-white">
           Just <span className="text-red-500">Clothing</span>
         </h1>
         {/* Add priority for LCP */}
@@ -52,28 +52,31 @@ const Navbar = () => {
       {/* Desktop Navigation */}
       <div className="flex gap-4 text-base font-bold max-lg:hidden">
         <Link
-          href="/"
+          href="#"
           className={`hover:text-red-500 ${
-            pathname === "/" ? "text-red-500" : "text-white"
+            pathname ===
+            "#"
+              ? "text-red-500"
+              : "text-white"
           }`}
         >
-          Home
+          Women
         </Link>
         <Link
-          href={user ? "/wishlist" : "/sign-in"}
+          href={user ? "#" : "/sign-in"}
           className={`hover:text-red-500 ${
             pathname === "/wishlist" ? "text-red-500" : "text-white"
           }`}
         >
-          Wishlist
+          Men
         </Link>
         <Link
-          href={user ? "/orders" : "/sign-in"}
+          href={user ? "/products" : "/sign-in"}
           className={`hover:text-red-500 ${
-            pathname === "/orders" ? "text-red-500" : "text-white"
+            pathname === "/products" ? "text-red-500" : "text-white"
           }`}
         >
-          Orders
+          Shop
         </Link>
       </div>
 
