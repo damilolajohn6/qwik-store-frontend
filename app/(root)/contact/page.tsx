@@ -8,7 +8,7 @@ import Image from "next/image";
 
 const ContactUs = () => {
   return (
-    <div className="">
+    <div className="bg-[#F2F2F2]">
       <section className="relative h-[300px] w-full overflow-hidden">
         {/* Background Image */}
         <Image
@@ -28,7 +28,7 @@ const ContactUs = () => {
           <p className="mt-2 text-lg text-gray-200">Home / Contact Us</p>
         </div>
       </section>
-      <div className="max-w-4xl mx-auto px-6 py-12 bg-[#F2F2F2]">
+      <div className="max-w-4xl mx-auto px-6 py-12 ">
         {/* Header */}
         <div className="text-center mb-8">
           <h2 className="text-4xl font-bold">Get in Touch with Us!</h2>
