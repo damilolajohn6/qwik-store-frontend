@@ -15,8 +15,8 @@ export default function Home() {
       <JustClothingShowcase />
       <ListCollections />
       <NewArrivalsCarousel />
-      {/* <Collections /> */}
       <JustClothAbout />
+      <Collections />
       <ProductList />
       <FashionTrends />
     </>
