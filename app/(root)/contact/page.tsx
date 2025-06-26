@@ -28,7 +28,7 @@ const ContactUs = () => {
           <p className="mt-2 text-lg text-gray-200">Home / Contact Us</p>
         </div>
       </section>
-      <div className="max-w-4xl mx-auto px-6 py-12">
+      <div className="max-w-4xl mx-auto px-6 py-12 bg-[#F2F2F2]">
         {/* Header */}
         <div className="text-center mb-8">
           <h2 className="text-4xl font-bold">Get in Touch with Us!</h2>
