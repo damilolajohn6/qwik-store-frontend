@@ -3,11 +3,13 @@ import { IoClose } from "react-icons/io5";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-white p-10">
+    <footer className="bg-[#2A2829] text-white p-10">
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Signup Section */}
         <div className="w-[500px] ">
-          <h2 className="text-heading1-bold font-bold">Sign Up and Receive 15% Off</h2>
+          <h2 className="text-heading1-bold font-bold">
+            Sign Up and Receive 15% Off
+          </h2>
           <div className="mt-3 border-b border-white flex items-center">
             <input
               type="email"

@@ -3,12 +3,12 @@
 import useCart from "@/lib/hooks/useCart";
 import { SignedIn, SignedOut, UserButton, useUser } from "@clerk/nextjs";
 import { CircleUserRound, Menu, Search, ShoppingCart } from "lucide-react";
-import Image from "next/image";
+import { getCollections } from "@/lib/actions/actions";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 
-const Navbar = () => {
+const Navbar = async () => {
   const pathname = usePathname();
   const router = useRouter();
   const { user, isLoaded } = useUser(); // Add isLoaded for Clerk auth state
@@ -25,13 +25,18 @@ const Navbar = () => {
     }
   };
 
+  const collections = await getCollections();
+
   // If Clerk auth state is still loading, show a placeholder
   if (!isLoaded) {
     return (
       <div className="sticky top-0 z-10 py-7 h-14 px-10 flex justify-between items-center bg-white max-sm:px-2">
         <Link href="/">
-          <h1 className="text-heading2-bold">
-            Just <span className="text-red-500">Clothing</span>
+          <h1
+            className="text-[30px] font-black text-6xl mb-8 text-[#014421]"
+            style={{ fontFamily: "'Newsreader', serif" }}
+          >
+            Lina" Clothing
           </h1>
         </Link>
         <div>Loading...</div>
@@ -40,40 +45,38 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="sticky top-0 z-10 py-2 px-10 flex gap-2 justify-between  items-center bg-gray-800 max-sm:px-2">
+    <nav className="sticky top-0 z-10 py-2 px-10 flex gap-2 justify-between  items-center bg-[#F7E6E0] max-sm:px-2">
       <Link href="/">
         {/* <Image src="/logo.png" alt="logo" width={130} height={100} priority />{" "} */}
-        <h1 className="text-heading2-bold text-white">
-          Just <span className="text-red-500">Clothing</span>
+        <h1
+          className="text-[30px] font-black text-6xl mb-8 text-[#014421]"
+          style={{ fontFamily: "'Newsreader', serif" }}
+        >
+          Lina" Clothing
         </h1>
         {/* Add priority for LCP */}
       </Link>
 
       {/* Desktop Navigation */}
-      <div className="flex gap-4 text-base font-bold max-lg:hidden">
-        <Link
-          href="#"
-          className={`hover:text-red-500 ${
-            pathname ===
-            "#"
-              ? "text-red-500"
-              : "text-white"
-          }`}
-        >
-          Women
-        </Link>
-        <Link
-          href={user ? "#" : "/sign-in"}
-          className={`hover:text-red-500 ${
-            pathname === "/wishlist" ? "text-red-500" : "text-white"
-          }`}
-        >
-          Men
-        </Link>
+      <div className="flex gap-4 text-base font-semibold max-lg:hidden">
+        {!collections || collections.length === 0 ? (
+          <p className="text-body-bold">No collections found</p>
+        ) : (
+          <div className="flex items-center justify-center gap-8">
+            {collections.map((collection: CollectionType) => (
+              <Link
+                href={`/collections/${collection._id}`}
+                key={collection._id}
+              >
+                <h1 className="hover:text-[#014421]">{collection.title}</h1>
+              </Link>
+            ))}
+          </div>
+        )}
         <Link
           href={user ? "/products" : "/sign-in"}
-          className={`hover:text-red-500 ${
-            pathname === "/products" ? "text-red-500" : "text-white"
+          className={`hover:text-[#014421] ${
+            pathname === "/products" ? "text-red-500" : "text-[#1A1A1A]"
           }`}
         >
           Shop
@@ -83,7 +86,7 @@ const Navbar = () => {
       {/* Search Bar */}
       <div className="flex gap-3 border border-gray-300 px-3 py-1 items-center rounded-lg">
         <input
-          className="outline-none max-sm:max-w-[120px] text-white placeholder-gray-400"
+          className="outline-none max-sm:max-w-[20px] text-[#1A1A1A] placeholder-gray-400"
           placeholder="Search..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
@@ -110,9 +113,9 @@ const Navbar = () => {
           href="/cart"
           className="flex items-center gap-2 border border-gray-300 rounded-lg px-2 py-1 hover:bg-gray-900 hover:text-white transition-colors max-md:hidden"
         >
-          <ShoppingCart className="h-5 w-5 text-white" />
-          <p className="text-base font-bold text-white">
-            Cart ({cart.cartItems.length || 0})
+          <ShoppingCart className="h-5 w-5 text-[#1A1A1A]" />
+          <p className="text-base font-bold text-[#1A1A1A]">
+            ({cart.cartItems.length || 0})
           </p>
         </Link>
 

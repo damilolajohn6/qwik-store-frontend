@@ -4,6 +4,7 @@ import JustClothAbout from "@/components/JustClothAbout";
 import JustClothingShowcase from "@/components/JustClothShowcase";
 import ListCollections from "@/components/ListCollections";
 import ProductList from "@/components/ProductList";
+import NewArrivalsCarousel from "@/components/NewArrivals";
 
 import Image from "next/image";
 
@@ -13,7 +14,8 @@ export default function Home() {
       {/* <Image src="/banner.png" alt="banner" width={2000} height={1000} className="w-screen" /> */}
       <JustClothingShowcase />
       <ListCollections />
-      <Collections />
+      <NewArrivalsCarousel />
+      {/* <Collections /> */}
       <JustClothAbout />
       <ProductList />
       <FashionTrends />
@@ -22,4 +24,3 @@ export default function Home() {
 }
 
 export const dynamic = "force-dynamic";
-

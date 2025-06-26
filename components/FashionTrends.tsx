@@ -50,7 +50,7 @@ const FashionTrends: React.FC = () => {
   ];
 
   return (
-    <div className="max-w-6xl mx-auto px-4 md:px-6 py-8">
+    <div className="max-w-6xl mx-auto bg-[#A69F92] px-4 md:px-6 py-8">
       {/* Header */}
       <header className="mb-12 text-center">
         <h1 className="text-4xl font-bold">Fashion Trends</h1>
